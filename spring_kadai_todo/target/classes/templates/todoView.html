@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+//ブラウザのタブに表示されるページタイトル。
+<title>ToDoリスト</title>
+</head>
+<body>
+	//ページ内見出し
+	<h2>ToDoリスト</h2>
+	//簡易的に罫線を引くための属性
+	<table border="1">
+        <tr>
+			//セルは列ヘッダ（ID, タイトル, 優先度, ステータス）を表す。
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>優先度</th>
+            <th>ステータス</th>
+        </tr>
+        // 繰り返し
+        <tr th:each="todo : ${todos}">
+            <td th:text="${todo.id}"></td>
+            <td th:text="${todo.title}"></td>
+            <td th:text="${todo.priority}"></td>
+            <td th:text="${todo.status}"></td>
+        </tr>
+    </table>
+
+</body>
+</html>
