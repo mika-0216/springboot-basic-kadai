@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<!--入力された内容を「そのまま表示する」ところ-->
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お問い合わせ内容確認</title>
+
+</head>
+<body>
+	
+	<h2>入力内容をご確認ください。</h2>
+		
+	<!--テーブルになるように修正-->	
+	<!--入力値をそのまま表示-->
+	
+	 <table border="1">
+            <tr>
+                <th>お名前</th>
+                <td th:text="${contactForm.getName()}"></td>
+            </tr>
+            <tr>
+                <th>メールアドレス</th>
+                <td th:text="${contactForm.getEmail()}"></td>
+            </tr>
+            <tr>
+                <th>お問い合わせ内容</th>
+                <td th:text="${contactForm.getMessage()}"></td>
+            </tr>
+        </table>	
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--ユーザーが「お名前・メールアドレス・お問い合わせ内容」 を入力する場所。-->
+<!--入力フォーム-->
+<!--エラーメッセージ表示-->
+<!--確認画面へ送るための form タグ-->
+
+<title>お問い合わせフォーム</title>
+
+</head>
+<body>
+	<h2>お問い合わせフォーム</h2>
+	
+	<!--入力した値を ContactForm にセット する-->
+	<!--「確認画面（/confirm）」に POST する-->
+	<!--バリデーションエラーがあればその場で表示する-->
+	<!--データを送る → POST （フォーム入力を送る、登録・更新をする）-->
+	
+	<form th:action="@{/confirm}" method="post" th:object="${contactForm}" >
+		<!-- ★ ここから追加：テーブルでレイアウト -->
+    <table>
+
+        <!-- お名前 -->
+        <tr>
+            <td>お名前</td>
+            <td>
+                <input type="text" th:field="*{name}">
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red;"></p>
+            </td>
+        </tr>
+
+        <!-- メールアドレス -->
+        <tr>
+            <td>メールアドレス</td>
+            <td>
+                <input type="text" th:field="*{email}">
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red;"></p>
+            </td>
+        </tr>
+
+        <!-- お問い合わせ内容 -->
+        <tr>
+            <td>お問い合わせ内容</td>
+            <td>
+                <textarea th:field="*{message}" cols="30" rows="10"></textarea>
+                <p th:if="${#fields.hasErrors('message')}" th:errors="*{message}" style="color:red;"></p>
+            </td>
+        </tr>
+
+    </table>
+    <!-- ★ ここまでテーブル -->
+		<button type="submit">送信</button>
+		</form>
+
+</body>
+</html>
